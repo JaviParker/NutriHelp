@@ -1,0 +1,7 @@
+{
+  "name": "NutriHelp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
