@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'meal/:idMeal',
     loadChildren: () => import('./meal/meal.module').then( m => m.MealPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
 ];
 
 @NgModule({
