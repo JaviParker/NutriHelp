@@ -11,8 +11,10 @@ import { ApiService } from '../services/api.service';
 })
 export class LoginPage implements OnInit {
 
+  local_email: number | undefined;
   local_nickname: number | undefined;
   local_password: number | undefined;
+  local_pic: number | undefined;
   // userData = [] as any[];
 
   constructor(
@@ -46,5 +48,30 @@ export class LoginPage implements OnInit {
     })
   }
 
+  deleteUser(){
+    this.http.delete<any>('http://localhost/localdb/delete.php?nickname='+this.local_nickname)
+    .subscribe(res => {
+      console.log('Delete exitoso:', res);
+    }, error => {
+      console.error('Error en la solicitud DELETE:', error);
+    });
+  }
+
+  addUser() {
+    const userData = {
+      email: this.local_email,
+      nickname: this.local_nickname,
+      password: this.local_password,
+      pic: this.local_pic
+    };
+  
+    this.http.post<any>('http://localhost/localdb/add.php', userData)
+      .subscribe(res => {
+        console.log('Usuario agregado exitosamente:', res);
+      }, error => {
+        console.error('Error en la solicitud POST:', error);
+      });
+  }
+  
 
 }
