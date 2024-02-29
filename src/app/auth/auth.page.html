@@ -1,6 +1,7 @@
 <ion-content [fullscreen]="true">
   <ion-row>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
+      <ion-img [src]=""></ion-img>
       <ion-title>auth</ion-title>
     </ion-toolbar>
     <ion-col sizeMd="4" offsetMd="4">
@@ -25,6 +26,9 @@
           <ion-item>
             <ion-button type="submit" expand="block" fill="solid" shape="round" [disabled]="!validationFormUser.valid">
               Login
+            </ion-button>
+            <ion-button href="signup" expand="block" fill="outline" shape="round">
+              Register
             </ion-button>
           </ion-item>
         </ion-list>

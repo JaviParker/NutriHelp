@@ -1,22 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost/localdb/'; // Reemplaza con la URL de tu API local
+  private apiUrl = 'http://localhost/localdb/';
 
   constructor(private http: HttpClient) {}
 
-  registerUser(userData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register.php`, userData);
+  postUserData(userData: any): Observable<any> {
+    return this.http.post<any>('http://localhost/localdb/add.php', userData)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
-
-  loginUser(credentials: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login.php`, credentials);
+  
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 400) {
+      // Error en los datos proporcionados por el usuario
+      return throwError('Error en los datos proporcionados por el usuario');
+    } else {
+      // Otro tipo de error
+      return throwError('Error en la solicitud POST');
+    }
   }
-
-  // Agrega más métodos para interactuar con otras tablas de la base de datos
 }

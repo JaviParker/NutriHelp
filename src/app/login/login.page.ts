@@ -43,7 +43,6 @@ export class LoginPage implements OnInit {
         this.router.navigate(['\profile'])
       }else{
         console.log("error");
-        
       }
     })
   }

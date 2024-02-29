@@ -16,6 +16,14 @@ export class AuthService {
     })
   }
 
+  userRegistration(value: any){
+    return new Promise<any> ((resolve, reject) =>{
+      this.auth.createUserWithEmailAndPassword(value.email, value.password)
+        .then((res: any) => resolve(res))
+        .catch((error: any) => reject(error));
+    })
+  }
+
   handleError(error: any): string {
     let errorMessage = '';
     if (error.code === 'auth/user-not-found') {

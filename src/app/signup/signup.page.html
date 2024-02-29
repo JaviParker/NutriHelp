@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col sizeMd="4" offsetMd="4">
+      <form [formGroup]="validationFormUser" (ngSubmit)="registerUser(validationFormUser.value)">
+        <ion-list>
+          <ion-item>
+            <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+            <ng-container *ngFor="let validation of validationUserMessage.email">
+              <div slot="end" class="error_message" *ngIf="validationFormUser?.get('email')?.hasError(validation.type) && (validationFormUser?.get('email')?.dirty || validationFormUser?.get('email')?.touched)">
+                {{validation.message}}
+              </div>
+            </ng-container>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Password" formControlName="password"></ion-input>
+            <ng-container *ngFor="let validation of validationUserMessage.password">
+              <div slot="end" class="error_message" *ngIf="validationFormUser?.get('password')?.hasError(validation.type) && (validationFormUser?.get('password')?.dirty || validationFormUser?.get('password')?.touched)">
+                {{validation.message}}
+              </div>
+            </ng-container>
+          </ion-item>
+            <ion-item>
+              <ion-button type="submit" expand="block" fill="solid" shape="round" [disabled]="!validationFormUser.valid">
+                Register
+              </ion-button>
+              <ion-button href="auth" expand="block" fill="outline" shape="round">
+                Login
+              </ion-button>
+          </ion-item>
+        </ion-list>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>
