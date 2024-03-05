@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="ingredients"></ion-back-button>
+      <ion-back-button defaultHref="home/favorites"></ion-back-button>
     </ion-buttons>
     <ion-title>meal</ion-title>
   </ion-toolbar>
@@ -15,8 +15,19 @@
           <ion-toolbar>
             <ion-title size="large"> {{meal.strMeal}} </ion-title>
           </ion-toolbar>
-        </ion-header>
-        <img src="{{meal.strMealThumb}}" alt="">
+        </ion-header>     
+          <img src="{{meal.strMealThumb}}" alt="">
+          <ion-fab id="fav-toast" vertical="top" horizontal="end" (click)="controlFavorite()">
+            <ion-fab-button>
+              <ion-icon *ngIf="added == false" name="heart-outline"></ion-icon>
+              <ion-icon *ngIf="added == true" name="heart"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+          <!-- <ion-toast trigger="fav-toast" message="{{toastMessage}}" [duration]="3500"></ion-toast> -->
+          <ion-button href="{{meal.strYoutube}}" color="primary" expand="block" fill="solid" shape="round">
+            <ion-label slot="start">Tutorial </ion-label>
+            <ion-icon name="logo-youtube" slot="end"></ion-icon>
+          </ion-button>
         <ion-row>
           <ion-col size="6">
             <p> Category: {{meal.strCategory}} </p>
@@ -24,9 +35,7 @@
           <ion-col size="6">
             <p> Zone: {{meal.strArea}} </p>
           </ion-col>
-        </ion-row>
-        
-        <a href="{{meal.strYoutube}}"><b>Tutorial <ion-icon aria-hidden="true" name="logo-youtube"></ion-icon></b></a>
+        </ion-row>        
         <div>
           <b> Instructions </b>
           <p> {{meal.strInstructions}} </p>

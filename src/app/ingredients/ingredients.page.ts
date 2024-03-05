@@ -22,7 +22,7 @@ export class IngredientsPage implements OnInit {
     this.http.get<any>('https://www.themealdb.com/api/json/v1/1/filter.php?c='+this.category)
     .subscribe(res => {
       this.meals = res.meals
-      console.log(this.meals);
+      // console.log(this.meals);
       
     })
   }

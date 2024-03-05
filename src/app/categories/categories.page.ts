@@ -17,7 +17,7 @@ export class CategoriesPage implements OnInit {
   ngOnInit() {
     this.http.get<any>('https://www.themealdb.com/api/json/v1/1/categories.php')
     .subscribe(res => {
-      console.log(res.categories);
+      // console.log(res.categories);
       this.categories = res.categories;      
     })
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { DataService } from '../shared/data.service';
 
 @Component({
   selector: 'app-auth',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
 })
 
 export class AuthPage implements OnInit {
+
+  email = "";
 
   validationUserMessage ={
     email:[
@@ -24,7 +27,7 @@ export class AuthPage implements OnInit {
 
   validationFormUser!: FormGroup;
   
-  constructor(public formBuilder: FormBuilder, public authService: AuthService, private router: Router) { }
+  constructor(public formBuilder: FormBuilder, public authService: AuthService, private router: Router, private dataservice: DataService) { }
 
   ngOnInit() {
     this.validationFormUser = this.formBuilder.group({
@@ -40,7 +43,10 @@ export class AuthPage implements OnInit {
   }
 
   LoginUser(value: { email: any; password: any; }){
-    console.log("Logged in");
+    console.log("Logged in "+value.email);
+    // this.dataservice.setGlobalVariable("alan@gmail.com");
+    // this.email = value.email;
+    localStorage.setItem('email',value.email)
     try{
       this.authService.loginFireauth(value).then(resp => {
         console.log(resp); 

@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>favorites</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">favorites</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-row>
+    <ion-col sizeMd="4" offsetMd="4">
+      <ion-list>
+        <ion-item *ngFor="let meal of favorites">
+          <app-meal-card id="{{meal.id}}"></app-meal-card>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-content>

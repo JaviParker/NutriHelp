@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { AuthService } from '../services/auth.service';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { DataService } from '../shared/data.service';
 
 @Component({
   selector: 'app-signup',
@@ -31,7 +32,8 @@ export class SignupPage implements OnInit {
     private loadingController: LoadingController,
     // private loading: LoadingController,
     private navController: NavController,
-    private router: Router
+    private router: Router,
+    private dataservice: DataService
   ) { }
 
   ngOnInit() {
@@ -55,6 +57,8 @@ export class SignupPage implements OnInit {
     this.showalert();
     try {
       this.authService.userRegistration(value).then( (response: any) =>{
+        this.dataservice.setGlobalVariable(value.email);
+        localStorage.setItem('email',value.email);
         console.log(response);
         if(response.user){
           response.user.updateProfile({
