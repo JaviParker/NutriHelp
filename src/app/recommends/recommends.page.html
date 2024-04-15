@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>favorites</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">favorites</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ng-container *ngFor="let category of categories">
+    <ion-row>
+      <h2 style="color: white; margin-left: 10px;">{{ category }}</h2>
+      <div class="card-container">
+        <ion-col *ngFor="let meal of mealsByCategory[category]">
+          <app-meal-card [id]="meal.api"></app-meal-card>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="saveCategory(category)" expand="block" fill="solid" shape="round" size="large" style="margin-top: 50%;">
+            Watch more!
+          </ion-button>
+        </ion-col>
+      </div>
+    </ion-row>
+  </ng-container>
+
+</ion-content>

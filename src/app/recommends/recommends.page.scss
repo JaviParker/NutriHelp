@@ -1,0 +1,13 @@
+.card-container {
+    display: flex;
+    overflow-x: auto; /* Cambiado de scroll a auto para activar el desplazamiento solo cuando sea necesario */
+    padding: 10px;
+    flex-wrap: nowrap; /* Evita que las cards se envuelvan */
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
+
+.card {
+    margin-right: 15px; /* Agrega un pequeño margen entre las cards */
+    height: 200px;
+}

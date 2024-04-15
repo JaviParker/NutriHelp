@@ -1,9 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header [translucent]="true" *ngFor="let meal of meal_details">
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home/favorites"></ion-back-button>
     </ion-buttons>
-    <ion-title>meal</ion-title>
+    <ion-title>{{meal.strMeal}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +16,9 @@
             <ion-title size="large"> {{meal.strMeal}} </ion-title>
           </ion-toolbar>
         </ion-header>     
-          <img src="{{meal.strMealThumb}}" alt="">
+          <div class="card">
+            <img src="{{meal.strMealThumb}}" alt="">
+          </div>
           <ion-fab id="fav-toast" vertical="top" horizontal="end" (click)="controlFavorite()">
             <ion-fab-button>
               <ion-icon *ngIf="added == false" name="heart-outline"></ion-icon>

@@ -21,8 +21,20 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     this.email = this.dataservice.getGlobalVariable();
     this.dataservice.setGlobalVariable(this.email);
-    console.log(this.email);
-    
+    localStorage.setItem('selectedGoal', 'lose');
   }
 
+  saveGoal(goal: string) {
+    localStorage.setItem('selectedGoal', goal);
+  }
+
+  saveAllergies(checked: boolean, allergy: string) {
+    if (checked) {
+      // Si el checkbox está activado, guardar la alergia en localStorage
+      localStorage.setItem("allergy", "libre de gluten");
+    } else {
+      // Si el checkbox está desactivado, eliminar la alergia de localStorage
+      localStorage.removeItem("allergy");
+    }
+  }
 }

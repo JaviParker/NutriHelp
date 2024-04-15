@@ -19,6 +19,7 @@ import { MealCardComponent } from '../components/meal-card/meal-card.component';
   declarations: [
     FavoritesPage,
     MealCardComponent
-  ]
+  ],
+  exports: [MealCardComponent]
 })
 export class FavoritesPageModule {}

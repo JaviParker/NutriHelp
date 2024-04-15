@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="secondary">
-    <ion-title>signup</ion-title>
+  <ion-toolbar color="primary" style="position: relative; height: 200px;">
+    <!-- Imagen de fondo -->
+    <ion-img [src]="'assets/pattern.jpg'" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3;"></ion-img>
+    <!-- Texto -->
+    <ion-title style="position: relative; z-index: 1; height: 200px; text-align: center; line-height: 200px; font-size: 3rem; font-weight: bold;">NutriHelp</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,32 +11,40 @@
   <ion-row>
     <ion-col sizeMd="4" offsetMd="4">
       <form [formGroup]="validationFormUser" (ngSubmit)="registerUser(validationFormUser.value)">
-        <ion-list>
-          <ion-item>
-            <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
-            <ng-container *ngFor="let validation of validationUserMessage.email">
-              <div slot="end" class="error_message" *ngIf="validationFormUser?.get('email')?.hasError(validation.type) && (validationFormUser?.get('email')?.dirty || validationFormUser?.get('email')?.touched)">
-                {{validation.message}}
-              </div>
-            </ng-container>
-          </ion-item>
-          <ion-item>
-            <ion-input type="text" placeholder="Password" formControlName="password"></ion-input>
-            <ng-container *ngFor="let validation of validationUserMessage.password">
-              <div slot="end" class="error_message" *ngIf="validationFormUser?.get('password')?.hasError(validation.type) && (validationFormUser?.get('password')?.dirty || validationFormUser?.get('password')?.touched)">
-                {{validation.message}}
-              </div>
-            </ng-container>
-          </ion-item>
-            <ion-item>
-              <ion-button type="submit" expand="block" fill="solid" shape="round" [disabled]="!validationFormUser.valid">
-                Register
-              </ion-button>
-              <ion-button href="auth" expand="block" fill="outline" shape="round">
-                Login
-              </ion-button>
-          </ion-item>
-        </ion-list>
+        <div class="form-control">
+          <input class="input input-alt" placeholder="Email" type="text" formControlName="email" name="email" autocomplete="off">
+          <span class="input-border input-border-alt"></span>
+        </div> 
+        <ng-container *ngFor="let validation of validationUserMessage.email">
+          <div slot="end" class="error_message" *ngIf="validationFormUser?.get('email')?.hasError(validation.type) && (validationFormUser?.get('email')?.dirty || validationFormUser?.get('email')?.touched)">
+            {{validation.message}}
+          </div>
+        </ng-container>
+        <div class="form-control">
+          <input class="input input-alt" placeholder="Password" type="password" formControlName="password" name="password">
+          <span class="input-border input-border-alt"></span>
+        </div> 
+        <ng-container *ngFor="let validation of validationUserMessage.password">
+          <div slot="end" class="error_message" *ngIf="validationFormUser?.get('password')?.hasError(validation.type) && (validationFormUser?.get('password')?.dirty || validationFormUser?.get('password')?.touched)">
+            {{validation.message}}
+          </div>
+        </ng-container>
+        <div align="center">
+          <button class="btn" type="submit" [disabled]="!validationFormUser.valid">
+            <strong>Register</strong>
+            <div id="container-stars">
+              <div id="stars"></div>
+            </div>
+          
+            <div id="glow">
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+          </button>
+          <a href="auth" class="btn reg" type="submit">
+            <strong>Login</strong>
+          </a>
+        </div>
       </form>
     </ion-col>
   </ion-row>

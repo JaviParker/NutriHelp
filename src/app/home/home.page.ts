@@ -13,6 +13,8 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(localStorage.getItem("allergy"));
+    
   }
 
 }

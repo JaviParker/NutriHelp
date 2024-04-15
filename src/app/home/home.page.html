@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>home</ion-title>
+    <ion-button href="profile" expand="block" fill="clear" shape="round" slot="end">
+      <ion-icon slot="start" name="person"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -10,20 +13,22 @@
       <ion-title size="large">home</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="profile" href="../categories">
-        <ion-icon name="person"></ion-icon>
-        <ion-label>User</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="categories">
-        <ion-icon name="apps"></ion-icon>
-        <ion-label>Categories</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="favorites">
-        <ion-icon name="heart"></ion-icon>
-        <ion-label>Favorites</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+  <div class="ion-justify-content-center" color="secondary">
+    <ion-tabs>
+      <ion-tab-bar slot="bottom" class="tab" color="tertiary">
+        <ion-tab-button tab="recommends" href="../categories">
+          <ion-icon name="rocket"></ion-icon>
+          <ion-label>AI</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="categories">
+          <ion-icon name="apps"></ion-icon>
+          <ion-label>Categories</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="favorites">
+          <ion-icon name="heart"></ion-icon>
+          <ion-label>Favorites</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
 </ion-content>

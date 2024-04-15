@@ -1,7 +1,21 @@
 <!-- <ion-card [routerLink]="[{{link}}]"> -->
-<ion-card href="{{link}}">  
+<!-- <ion-card href="{{link}}">  
   <ion-card-content>
     <img src="{{image}}" alt="">
     <ion-card-title *ngIf="tittle != '' " >{{ tittle }}</ion-card-title>
   </ion-card-content>
-</ion-card>
+</ion-card> -->
+
+  <ion-card class="card" href="{{link}}">  
+    <div class="img-container">
+      <div class="img">
+        <img src="{{image}}" alt="">
+      </div>
+      <div class="description card">
+          <span class="title">
+            {{ tittle }}
+          </span>
+      </div>
+  </div>
+  </ion-card>
+

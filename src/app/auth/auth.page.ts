@@ -30,6 +30,8 @@ export class AuthPage implements OnInit {
   constructor(public formBuilder: FormBuilder, public authService: AuthService, private router: Router, private dataservice: DataService) { }
 
   ngOnInit() {
+    localStorage.setItem("ip","192.168.0.131");
+
     this.validationFormUser = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
@@ -51,7 +53,7 @@ export class AuthPage implements OnInit {
       this.authService.loginFireauth(value).then(resp => {
         console.log(resp); 
         // Redirige al usuario a la página de perfil
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/home']);
       }).catch(error => {
         const errorMessage = this.authService.handleError(error);
         console.log(errorMessage);

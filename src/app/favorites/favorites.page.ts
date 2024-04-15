@@ -11,6 +11,7 @@ export class FavoritesPage implements OnInit {
 
   favorites = [] as any[];
   email: any;
+  ip = localStorage.getItem("ip");
 
   constructor(private http: HttpClient, private dataservice: DataService) { }
 
@@ -23,7 +24,7 @@ export class FavoritesPage implements OnInit {
 
   getFavs(){
     this.email = localStorage.getItem('email');
-    this.http.get<any>('http://localhost/localdb/controlFav.php?user_email='+this.email)
+    this.http.get<any>('http://'+this.ip+'/localdb/controlFav.php?user_email='+this.email)
     .subscribe(res => {
       this.favorites = res;            
     })

@@ -19,9 +19,9 @@ const routes: Routes = [
         loadChildren: () => import('../categories/categories.module').then( m => m.CategoriesPageModule)
       },
       {
-        path: "profile",
+        path: "recommends",
         // loadChildren: '../categories/categories.module#categoriesPageModule'
-        loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)
+        loadChildren: () => import('../recommends/recommends.module').then( m => m.RecommendsPageModule)
       },
       {
         path: "favorites",

@@ -66,7 +66,7 @@ export class SignupPage implements OnInit {
           }).then(() => {
             // Actualización del perfil exitosa
             this.loading.dismiss();
-            this.router.navigate(['categories'])
+            this.router.navigate(['profile'])
           }).catch((error: any) => {
             // Error al actualizar el perfil
             this.loading.dismiss();
