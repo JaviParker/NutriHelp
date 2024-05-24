@@ -30,7 +30,7 @@ export class AuthPage implements OnInit {
   constructor(public formBuilder: FormBuilder, public authService: AuthService, private router: Router, private dataservice: DataService) { }
 
   ngOnInit() {
-    localStorage.setItem("ip","192.168.0.131");
+    localStorage.setItem("ip","172.17.22.50");
 
     this.validationFormUser = this.formBuilder.group({
       email: new FormControl('', Validators.compose([

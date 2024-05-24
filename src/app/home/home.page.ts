@@ -8,6 +8,8 @@ import { DataService } from '../shared/data.service';
 })
 export class HomePage implements OnInit {
 
+  name = localStorage.getItem("name");
+
   constructor(
     private dataservice: DataService,
   ) { }

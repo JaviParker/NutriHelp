@@ -16,6 +16,8 @@ export class MealPage implements OnInit {
   email: any;
   added: boolean = false;
 
+  ip = localStorage.getItem("ip");
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
@@ -37,7 +39,7 @@ export class MealPage implements OnInit {
   }
 
   checkFavoriteStatus(){
-    this.http.get<any>('http://localhost/localdb/controlFav.php?id="'+this.id+'"&user_email='+this.email)
+    this.http.get<any>('http://'+this.ip+'/localdb/controlFav.php?id="'+this.id+'"&user_email='+this.email)
     .subscribe(res => {
       this.added = res.success;
       
@@ -52,7 +54,7 @@ export class MealPage implements OnInit {
       user_email: localStorage.getItem('email')
     };
     if(this.added == false){
-      this.http.post<any>('http://localhost/localdb/controlFav.php', mealData)
+      this.http.post<any>('http://'+this.ip+'/localdb/controlFav.php', mealData)
       .subscribe(res => {
         this.checkFavoriteStatus();
         this.PostedMessage();
@@ -63,7 +65,7 @@ export class MealPage implements OnInit {
   }
 
   deleteMeal(){
-    this.http.delete<any>('http://localhost/localdb/controlFav.php?id='+this.id+'&user_email='+this.email)
+    this.http.delete<any>('http://'+this.ip+'/localdb/controlFav.php?id='+this.id+'&user_email='+this.email)
     .subscribe(res => {
       // console.log('Delete exitoso:', res);
       this.CleanedMessage();

@@ -11,6 +11,7 @@ import { DataService } from '../shared/data.service';
 export class ProfilePage implements OnInit {
 
   email: any;
+  name: any | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -36,5 +37,9 @@ export class ProfilePage implements OnInit {
       // Si el checkbox está desactivado, eliminar la alergia de localStorage
       localStorage.removeItem("allergy");
     }
+  }
+
+  saveName(){
+    localStorage.setItem("name",this.name);
   }
 }

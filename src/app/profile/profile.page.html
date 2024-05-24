@@ -19,6 +19,9 @@
       <ion-col sizeMd="4" offsetMd="4">
         <ion-list>
             <ion-item>
+              <ion-input class="input1" label="Nombre" type="text" placeholder="Nombre" color="transparent" [(ngModel)]="name" (ionChange)="saveName()"></ion-input>
+            </ion-item>
+            <ion-item>
               <ion-input class="input1" label="Ingresa tu peso actual" type="number" placeholder="Peso" color="transparent"></ion-input>
             </ion-item>
             <ion-item>
